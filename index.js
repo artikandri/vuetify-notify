@@ -9,8 +9,8 @@ export default {
     var instance = new extendComponent({
       vuetify: options.vuetify,
       data: {
-        options: options.options
-      }
+        options: options.options,
+      },
     });
 
     Vue.prototype.$nextTick(() => {
@@ -19,5 +19,5 @@ export default {
         .getElementById(options.container || "app")
         .appendChild(instance.$el);
     });
-  }
+  },
 };

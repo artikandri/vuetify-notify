@@ -9,8 +9,15 @@
     v-model="model"
   >
     {{ text }}
-    <v-btn @click="close" icon>
-      <v-icon>mdi-close</v-icon>
+    <v-btn
+      text
+      small
+      class="text-right"
+      v-show="options.closeButton.show"
+      @click="close"
+      icon
+    >
+      <v-icon>{{ options.closeButton.icon || 'mdi-close' }} </v-icon>
     </v-btn>
   </v-snackbar>
 </template>
@@ -19,16 +26,19 @@ const _options = {
   x: "left",
   y: "bottom",
   timeout: 3000,
-  color: "default"
+  color: "default",
+  closeButton: {
+    show: false,
+    icon: "mdi-close",
+  },
 };
 export default {
   data() {
     return {
       model: false,
       promise: null,
-
       text: {},
-      options: {}
+      options: {},
     };
   },
   methods: {
@@ -46,7 +56,7 @@ export default {
     close() {
       this.promise.resolve(true);
       this.model = false;
-    }
-  }
+    },
+  },
 };
 </script>
