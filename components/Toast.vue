@@ -38,7 +38,12 @@ export default {
       model: false,
       promise: null,
       text: {},
-      options: {},
+      options: {
+        closeButton: {
+          show: false,
+          icon: "mdi-close",
+        },
+      },
     };
   },
   methods: {
@@ -48,7 +53,7 @@ export default {
         this.$nextTick(() => {
           this.promise = Object.assign({}, { resolve, reject });
           this.text = text;
-          this.options = Object.assign(_options, options);
+          this.options = { ..._options, ...options };
           this.model = true;
         });
       });
